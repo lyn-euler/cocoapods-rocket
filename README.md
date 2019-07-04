@@ -1,3 +1,11 @@
 # cocoapods-rocket
 
-🚀iOS 一键发布工具
+A description of cocoapods-rocket.
+
+## Installation
+
+    $ gem install cocoapods-rocket
+
+## Usage
+
+    $ pod spec rocket POD_NAME

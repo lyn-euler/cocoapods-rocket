@@ -1,0 +1,9 @@
+{
+    "name": "",
+    "sources": ["git@git.caicaivip.com:frontend/ios/dlb-cocoapods-spec.git"],
+    "targetRepos":["caicaivip-dlb-cocoapods-spec"],
+    "useLibraries": true,
+    "allowWarnings": true,
+    "verbose": true,
+    "useModularHeaders": true
+}
