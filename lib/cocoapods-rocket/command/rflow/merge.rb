@@ -109,7 +109,7 @@ module Pod
                   git commit -am 'feat(pod-rflow):合并分支#{curr_branch}到#{@target_branch}'
                   git push origin '#{@target_branch}':'#{@target_branch}'
               fi
-              echo "🚗🚗🚗🚗🚗🚗🚗🚗合并#{curr_branch}分支到@target_branch成功"
+              echo "🚗🚗🚗🚗🚗🚗🚗🚗合并#{curr_branch}分支到#{@target_branch}成功"
               }
               raise "#{root_pod}::合并失败" unless system(cmd)
               system("rm -rf '#{release_dir}'")
@@ -123,11 +123,13 @@ module Pod
           puts "🚀[pod-gflow] modify podfile #{root_name}".green
           dependencies = @podfile.need_release_pods.select {|item| item.root_name == root_name}
           text = File.read(@podfile.file_path)
+          # puts dependencies
           dependencies.each do |pod|
             text.each_line { |line|
-              if line.include?("'#{pod.name}'") || line.include?("\"#{pod.name}\"")
+              if line.include?("'#{pod.name}'") || line.include?("\"#{pod.name}\"") || line.include?("'#{pod.root_name}'") || line.include?("\"#{pod.root_name}\"")
                 # new_line = line.gsub(%r{,\s*:git\s*=>\s*['|"][\w|\S]+['|"]},'')
                 new_line = line.gsub(%r{,\s*:branch\s*=>\s*['|"][\w|\S]+['|"]},", :branch => '#{@target_branch}'")
+                puts new_line.yellow
                 text = text.gsub("#{line}", "#{new_line}")
               end
             }
