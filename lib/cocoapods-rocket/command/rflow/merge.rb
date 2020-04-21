@@ -106,7 +106,7 @@ module Pod
                   echo "没有任何变更$str"
                   git push origin '#{@target_branch}':'#{@target_branch}'
               else
-                  git commit -am 'feat(pod-rflow):合并分支#{curr_branch}到#{@target_branch}'
+                  git commit -am 'pod-rflow:合并分支#{curr_branch}到#{@target_branch}'
                   git push origin '#{@target_branch}':'#{@target_branch}'
               fi
               echo "🚗🚗🚗🚗🚗🚗🚗🚗合并#{curr_branch}分支到#{@target_branch}成功"
@@ -145,7 +145,7 @@ module Pod
             cmd = %Q{
             set -e
             git add Podfile*
-            git commit -m 'feat(rocket-rflow): update podfile & podfile.lock'
+            git commit -m 'rocket-rflow: update podfile & podfile.lock'
             git push
             }
             system(cmd)

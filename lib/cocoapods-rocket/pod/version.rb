@@ -6,7 +6,6 @@ module Pod
         segments = self.segments
         segments.pop while segments.any? { |s| String === s }
         segments.pop if segments.size > 3
-
         segments[2] = segments[2].succ
         self.class.new segments.join(".")
       end
